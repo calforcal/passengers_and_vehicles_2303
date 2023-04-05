@@ -21,4 +21,15 @@ RSpec.describe Park do
       expect(@water_world.admission_price).to eq(20)
     end
   end
+
+  describe "#add_vehicle" do
+    it "starts with no vehicles" do
+      expect(@water_world.vehicles).to eq([])
+    end
+
+    it "can add vehicles to the park" do
+      @water_world.add_vehicle(@vehicle)
+      expect(@water_world.vehicles).to eq([@vehicle])
+    end
+  end
 end
