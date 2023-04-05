@@ -32,4 +32,15 @@ RSpec.describe Park do
       expect(@water_world.vehicles).to eq([@vehicle])
     end
   end
+
+  describe "#passengers" do
+    it "can list all the passengers that have entered the park" do
+      @vehicle.add_passenger(@charlie)
+      @vehicle.add_passenger(@jude)
+      @vehicle.add_passenger(@taylor)
+      @water_world.add_vehicle(@vehicle)
+
+      expect(@water_world.passengers).to eq(@vehicle.passengers)
+    end
+  end
 end
