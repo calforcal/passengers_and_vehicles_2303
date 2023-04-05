@@ -6,9 +6,13 @@ RSpec.describe Park do
   before(:each) do
     @water_world = Park.new("Water World", 20)
     @vehicle = Vehicle.new("2001", "Honda", "Civic")
+    @vehicle_2 = Vehicle.new("2020", "Subaru", "Forester")
     @charlie = Passenger.new({"name" => "Charlie", "age" => 18})  
     @jude = Passenger.new({"name" => "Jude", "age" => 20})
     @taylor = Passenger.new({"name" => "Taylor", "age" => 12}) 
+    @zoe = Passenger.new({"name" => "Zoe", "age" => 25})
+    @michael = Passenger.new({"name" => "Michael", "age" => 28})
+    @carolyn = Passenger.new({"name" => "Carolyn", "age" => 30})
   end
 
   describe "#initialize" do
@@ -29,7 +33,8 @@ RSpec.describe Park do
 
     it "can add vehicles to the park" do
       @water_world.add_vehicle(@vehicle)
-      expect(@water_world.vehicles).to eq([@vehicle])
+      @water_world.add_vehicle(@vehicle_2)
+      expect(@water_world.vehicles).to eq([@vehicle, @vehicle_2])
     end
   end
 
@@ -38,9 +43,13 @@ RSpec.describe Park do
       @vehicle.add_passenger(@charlie)
       @vehicle.add_passenger(@jude)
       @vehicle.add_passenger(@taylor)
+      @vehicle_2.add_passenger(@zoe)
+      @vehicle_2.add_passenger(@michael)
+      @vehicle_2.add_passenger(@carolyn)
       @water_world.add_vehicle(@vehicle)
+      @water_world.add_vehicle(@vehicle_2)
 
-      expect(@water_world.passengers).to eq(@vehicle.passengers)
+      expect(@water_world.passengers).to eq([@vehicle.passengers, @vehicle_2.passengers].flatten)
     end
   end
 
@@ -49,9 +58,13 @@ RSpec.describe Park do
       @vehicle.add_passenger(@charlie)
       @vehicle.add_passenger(@jude)
       @vehicle.add_passenger(@taylor)
+      @vehicle_2.add_passenger(@zoe)
+      @vehicle_2.add_passenger(@michael)
+      @vehicle_2.add_passenger(@carolyn)
       @water_world.add_vehicle(@vehicle)
+      @water_world.add_vehicle(@vehicle_2)
 
-      expect(@water_world.revenue).to eq(40)
+      expect(@water_world.revenue).to eq(100)
     end
   end
 end
