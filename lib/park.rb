@@ -19,4 +19,8 @@ class Park
     num_adult_attendees = passengers.find_all { |passenger| passenger.adult? }.count
     num_adult_attendees * admission_price
   end
+
+  def all_attendees
+    attendees = passengers.map { |passenger| passenger.name }.sort
+  end
 end
