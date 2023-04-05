@@ -95,6 +95,18 @@ RSpec.describe Park do
       @water_world.add_vehicle(@vehicle_2)
 
       expect(@water_world.minors).to eq(["Taylor", "Zoe"])
+    end
+
+    it "can return a list of all adults sorted alphabetically" do
+      @vehicle.add_passenger(@charlie)
+      @vehicle.add_passenger(@jude)
+      @vehicle.add_passenger(@taylor)
+      @vehicle_2.add_passenger(@zoe)
+      @vehicle_2.add_passenger(@michael)
+      @vehicle_2.add_passenger(@carolyn)
+      @water_world.add_vehicle(@vehicle)
+      @water_world.add_vehicle(@vehicle_2)
+
       expect(@water_world.adults).to eq(["Carolyn", "Charlie", "Jude", "Michael"])
     end
   end
