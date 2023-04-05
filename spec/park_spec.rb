@@ -67,4 +67,19 @@ RSpec.describe Park do
       expect(@water_world.revenue).to eq(100)
     end
   end
+
+  describe "#all_attendees" do
+    it "can list all attendees alphabetically" do
+      @vehicle.add_passenger(@charlie)
+      @vehicle.add_passenger(@jude)
+      @vehicle.add_passenger(@taylor)
+      @vehicle_2.add_passenger(@zoe)
+      @vehicle_2.add_passenger(@michael)
+      @vehicle_2.add_passenger(@carolyn)
+      @water_world.add_vehicle(@vehicle)
+      @water_world.add_vehicle(@vehicle_2)
+
+      expect(@water_world.all_attendees).to eq(["Carolyn", "Charlie", "Jude", "Michael", "Taylor", "Zoe"])
+    end
+  end
 end
