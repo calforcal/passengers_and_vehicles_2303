@@ -14,4 +14,9 @@ class Park
   def passengers
     park_attendees = @vehicles.map { |vehicle| vehicle.passengers }.flatten
   end
+
+  def revenue
+    num_adult_attendees = passengers.find_all { |passenger| passenger.adult? }.count
+    num_adult_attendees * admission_price
+  end
 end
