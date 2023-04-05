@@ -43,4 +43,15 @@ RSpec.describe Park do
       expect(@water_world.passengers).to eq(@vehicle.passengers)
     end
   end
+
+  describe "#revenue" do
+    it "can calculate the revenue based on adults and admission price" do
+      @vehicle.add_passenger(@charlie)
+      @vehicle.add_passenger(@jude)
+      @vehicle.add_passenger(@taylor)
+      @water_world.add_vehicle(@vehicle)
+
+      expect(@water_world.revenue).to eq(40)
+    end
+  end
 end
