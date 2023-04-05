@@ -10,7 +10,7 @@ RSpec.describe Park do
     @charlie = Passenger.new({"name" => "Charlie", "age" => 18})  
     @jude = Passenger.new({"name" => "Jude", "age" => 20})
     @taylor = Passenger.new({"name" => "Taylor", "age" => 12}) 
-    @zoe = Passenger.new({"name" => "Zoe", "age" => 25})
+    @zoe = Passenger.new({"name" => "Zoe", "age" => 15})
     @michael = Passenger.new({"name" => "Michael", "age" => 28})
     @carolyn = Passenger.new({"name" => "Carolyn", "age" => 30})
   end
@@ -64,7 +64,7 @@ RSpec.describe Park do
       @water_world.add_vehicle(@vehicle)
       @water_world.add_vehicle(@vehicle_2)
 
-      expect(@water_world.revenue).to eq(100)
+      expect(@water_world.revenue).to eq(80)
     end
   end
 
@@ -80,6 +80,22 @@ RSpec.describe Park do
       @water_world.add_vehicle(@vehicle_2)
 
       expect(@water_world.all_attendees).to eq(["Carolyn", "Charlie", "Jude", "Michael", "Taylor", "Zoe"])
+    end
+  end
+
+  describe "#minors & #adults" do
+    it "can return a list of all minors sorted alphabetically" do
+      @vehicle.add_passenger(@charlie)
+      @vehicle.add_passenger(@jude)
+      @vehicle.add_passenger(@taylor)
+      @vehicle_2.add_passenger(@zoe)
+      @vehicle_2.add_passenger(@michael)
+      @vehicle_2.add_passenger(@carolyn)
+      @water_world.add_vehicle(@vehicle)
+      @water_world.add_vehicle(@vehicle_2)
+
+      expect(@water_world.minors).to eq(["Taylor", "Zoe"])
+      expect(@water_world.adults).to eq(["Carolyn", "Charlie", "Jude", "Michael"])
     end
   end
 end
